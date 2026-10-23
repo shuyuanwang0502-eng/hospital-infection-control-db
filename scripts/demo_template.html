@@ -336,7 +336,7 @@ async function run() {
   }
   if (sql.trim() !== current.sql.trim()) {
     $("resmeta").innerHTML = "";
-    const live = "__PAGES_URL__".includes("shuyuanwang0502-eng") ? "the GitHub Pages version" : `the <a href="__PAGES_URL__" target="_blank" rel="noopener">live version</a>`;
+    const live = "__PAGES_URL__".includes("YOUR_GITHUB_USERNAME") ? "the GitHub Pages version" : `the <a href="__PAGES_URL__" target="_blank" rel="noopener">live version</a>`;
     $("resout").innerHTML = `<div class="note">This view shows saved results, so edited SQL can't run here. Open ${live} to run your own SQL on PostgreSQL in the browser, or press Reset query.</div>`;
     return;
   }
@@ -398,7 +398,7 @@ function showTab(id) {
 TABS.forEach((t) => $("tab-" + t).addEventListener("click", () => showTab(t)));
 
 /* ---------- Init ---------- */
-document.querySelectorAll('a[href*="shuyuanwang0502-eng"]').forEach((a) => { if (a.closest(".links")) a.hidden = true; });
+document.querySelectorAll('a[href*="YOUR_GITHUB_USERNAME"]').forEach((a) => { if (a.closest(".links")) a.hidden = true; });
 $("runBtn").addEventListener("click", run);
 $("resetBtn").addEventListener("click", () => { $("sql").value = current.sql; fitEditor(); run(); });
 $("sql").addEventListener("keydown", (e) => {

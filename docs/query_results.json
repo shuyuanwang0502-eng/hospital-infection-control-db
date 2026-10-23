@@ -693,9 +693,9 @@
  {
   "n": 8,
   "title": "",
-  "question": "Top 3 cases with the most collected samples. WITH TIES keeps cases that are tied with 3rd place.",
+  "question": "Top 3 cases with the most collected samples. WITH TIES keeps cases that are tied with 3rd place, the outer ORDER BY just sorts ties by case id.",
   "technique": "FETCH FIRST ... WITH TIES",
-  "sql": "SELECT case_id, COUNT(*) AS collected_samples\nFROM evidence_samples\nGROUP BY case_id\nORDER BY collected_samples DESC\nFETCH FIRST 3 ROWS WITH TIES;",
+  "sql": "SELECT *\nFROM (\n    SELECT case_id, COUNT(*) AS collected_samples\n    FROM evidence_samples\n    GROUP BY case_id\n    ORDER BY collected_samples DESC\n    FETCH FIRST 3 ROWS WITH TIES\n) top3\nORDER BY collected_samples DESC, case_id;",
   "columns": [
    "case_id",
    "collected_samples"
@@ -706,11 +706,11 @@
     "5"
    ],
    [
-    "22013",
+    "22006",
     "4"
    ],
    [
-    "22006",
+    "22013",
     "4"
    ]
   ]

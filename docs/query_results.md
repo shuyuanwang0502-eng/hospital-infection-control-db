@@ -250,23 +250,27 @@ ORDER BY total_cases DESC, infection_type;
 
 ## Query 8
 
-Top 3 cases with the most collected samples. WITH TIES keeps cases that are tied with 3rd place.
+Top 3 cases with the most collected samples. WITH TIES keeps cases that are tied with 3rd place, the outer ORDER BY just sorts ties by case id.
 
 Uses: FETCH FIRST ... WITH TIES
 
 ```sql
-SELECT case_id, COUNT(*) AS collected_samples
-FROM evidence_samples
-GROUP BY case_id
-ORDER BY collected_samples DESC
-FETCH FIRST 3 ROWS WITH TIES;
+SELECT *
+FROM (
+    SELECT case_id, COUNT(*) AS collected_samples
+    FROM evidence_samples
+    GROUP BY case_id
+    ORDER BY collected_samples DESC
+    FETCH FIRST 3 ROWS WITH TIES
+) top3
+ORDER BY collected_samples DESC, case_id;
 ```
 
 | case_id | collected_samples |
 |---|---|
 | 22015 | 5 |
-| 22013 | 4 |
 | 22006 | 4 |
+| 22013 | 4 |
 
 (3 rows)
 
