@@ -1,0 +1,51 @@
+case_id,storage_id,description,tag,collected_by_doctor_id
+22006,1,Air sample from corridor,surface swab,30026
+22010,1,Blood test from patient,blood test,30072
+22005,1,Nasal swab,surface swab,30064
+22008,1,Surface swab from bed rail,air sample,30077
+22015,1,Swab from ventilator filter,blood test,30045
+22003,1,Stool sample,air sample,30031
+22009,1,Blood test from patient,unclassified,30019
+22001,1,Air sample from corridor,unclassified,30046
+22006,2,Swab from ventilator filter,unclassified,30071
+22012,1,Stool sample,surface swab,30076
+22014,1,Swab from ventilator filter,surface swab,30071
+22013,1,Blood test from patient,blood test,30034
+22003,2,Blood test from patient,unclassified,30035
+22009,2,Blood test from patient,unclassified,30076
+22001,2,Swab from ventilator filter,air sample,30079
+22014,2,Nasal swab,blood test,30038
+22006,3,Swab from ventilator filter,air sample,30037
+22013,2,Air sample from corridor,unclassified,30046
+22007,1,Stool sample,blood test,30070
+22015,2,Nasal swab,blood test,30056
+22016,1,Blood test from patient,air sample,30030
+22013,3,Surface swab from bed rail,unclassified,30076
+22018,1,Surface swab from bed rail,air sample,30068
+22012,2,Blood test from patient,surface swab,30072
+22001,3,Surface swab from bed rail,air sample,30028
+22012,3,Swab from ventilator filter,unclassified,30075
+22010,2,Swab from ventilator filter,surface swab,30014
+22011,1,Swab from ventilator filter,blood test,30066
+22015,3,Air sample from corridor,surface swab,30038
+22004,1,Surface swab from bed rail,air sample,30013
+22017,1,Blood test from patient,blood test,30042
+22006,4,Blood test from patient,unclassified,30050
+22020,1,Blood test from patient,unclassified,30075
+22007,2,Air sample from corridor,surface swab,30073
+22018,2,Blood test from patient,air sample,30041
+22009,3,Nasal swab,unclassified,30067
+22019,1,Surface swab from bed rail,air sample,30045
+22020,2,Stool sample,surface swab,30017
+22004,2,Blood test from patient,air sample,30018
+22013,4,Swab from ventilator filter,blood test,30062
+22010,3,Blood test from patient,blood test,30040
+22016,2,Blood test from patient,blood test,30049
+22015,4,Swab from ventilator filter,blood test,30010
+22008,2,Stool sample,air sample,30021
+22019,2,Surface swab from bed rail,air sample,30069
+22015,5,Stool sample,blood test,30054
+22008,3,Air sample from corridor,surface swab,30057
+22004,3,Blood test from patient,blood test,30075
+22014,3,Blood test from patient,blood test,30026
+22018,3,Air sample from corridor,blood test,30041

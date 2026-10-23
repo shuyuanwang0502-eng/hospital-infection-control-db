@@ -1,0 +1,21 @@
+id,infection_type,detection_datetime,status,ward,lead_doctor_id
+22001,COVID-19,2024-06-09 18:28:00,resolved,Internal Medicine,30048
+22002,VRE,2024-05-21 13:10:00,active,Surgery,30017
+22003,COVID-19,2024-03-21 20:30:00,resolved,Surgery,30013
+22004,RSV,2024-05-20 03:18:00,active,Pediatrics,30034
+22005,C. difficile,2024-05-19 04:53:00,resolved,ICU,30028
+22006,C. difficile,2024-04-28 00:26:00,active,Oncology,30064
+22007,COVID-19,2024-04-14 12:05:00,resolved,Pediatrics,30003
+22008,COVID-19,2024-03-27 22:41:00,resolved,Pediatrics,30017
+22009,MRSA,2024-04-20 15:44:00,active,Emergency,30060
+22010,C. difficile,2024-06-01 00:57:00,active,ICU,30032
+22011,Norovirus,2024-04-03 17:46:00,resolved,ICU,30036
+22012,Norovirus,2024-04-22 03:03:00,active,Oncology,30079
+22013,C. difficile,2024-03-23 03:53:00,resolved,Surgery,30068
+22014,MRSA,2024-06-03 16:36:00,active,Emergency,30018
+22015,COVID-19,2024-05-08 00:39:00,resolved,Pediatrics,30073
+22016,C. difficile,2024-04-07 21:42:00,active,Surgery,30046
+22017,MRSA,2024-05-21 17:32:00,active,Oncology,30060
+22018,MRSA,2024-06-04 12:23:00,resolved,Emergency,30002
+22019,COVID-19,2024-03-23 11:15:00,active,Surgery,30042
+22020,Norovirus,2024-03-20 11:34:00,resolved,Emergency,30022

@@ -1,0 +1,413 @@
+<title>Hospital Infection Control Database</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Interactive demo of a PostgreSQL database for hospital infection-outbreak investigation: EER design, schema, constraints and analytical SQL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root {
+  --bg: #f3f6f6;
+  --surface: #ffffff;
+  --sunken: #e9efef;
+  --ink: #12252a;
+  --muted: #58696d;
+  --line: #d4dddd;
+  --accent: #0b6e6a;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcefec;
+  --alert: #b3261e;
+  --alert-soft: #fbe7e5;
+  --ok: #276b45;
+  --ok-soft: #e1f1e7;
+  --code-bg: #f7faf9;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1618; --surface: #122125; --sunken: #0f1c1f; --ink: #e2ebeb; --muted: #8fa2a5;
+    --line: #22363a; --accent: #4fbdb4; --accent-ink: #062523; --accent-soft: #153a3a;
+    --alert: #f08a80; --alert-soft: #3a1d1b; --ok: #74c793; --ok-soft: #173325; --code-bg: #0f1c1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1618; --surface: #122125; --sunken: #0f1c1f; --ink: #e2ebeb; --muted: #8fa2a5;
+  --line: #22363a; --accent: #4fbdb4; --accent-ink: #062523; --accent-soft: #153a3a;
+  --alert: #f08a80; --alert-soft: #3a1d1b; --ok: #74c793; --ok-soft: #173325; --code-bg: #0f1c1f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.55 var(--font-body); }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, pre, textarea, .mono { font-family: var(--font-mono); }
+
+/* Header */
+header { border-bottom: 1px solid var(--line); background: var(--surface); }
+header .wrap { padding-block: 28px 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.eyebrow { font: 500 12px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.eyebrow span + span::before { content: "/"; margin-right: 14px; color: var(--line); }
+h1 { font: 800 clamp(30px, 5vw, 52px)/1.02 var(--font-display); font-stretch: 78%; letter-spacing: -.01em; margin: 0; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--accent); }
+.lede { margin: 0; max-width: 68ch; color: var(--muted); font-size: 16px; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 4px 0 0; padding: 0; list-style: none; font-size: 13px; color: var(--muted); }
+.facts b { font: 600 15px var(--font-mono); color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 5px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 7px; font: 500 14px var(--font-body); padding: 7px 13px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn.primary:hover { filter: brightness(1.07); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.engine { display: inline-flex; align-items: center; gap: 8px; font: 500 12.5px var(--font-mono); padding: 5px 10px; border-radius: 99px; background: var(--sunken); color: var(--muted); border: 1px solid var(--line); }
+.engine i { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.engine[data-state="live"] { color: var(--ok); background: var(--ok-soft); border-color: transparent; }
+.engine[data-state="live"] i { background: var(--ok); }
+.engine[data-state="loading"] i { animation: pulse 1s infinite alternate; }
+.engine[data-state="snapshot"] { color: var(--ink); }
+.engine[data-state="snapshot"] i { background: var(--accent); }
+@keyframes pulse { from { opacity: .25 } to { opacity: 1 } }
+@media (prefers-reduced-motion: reduce) { .engine i { animation: none !important; } }
+
+/* Tabs */
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; }
+nav.tabs button { font: 600 14px var(--font-body); background: none; border: 0; padding: 13px 14px 11px; color: var(--muted); border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+main .wrap { padding-block: 24px 64px; }
+
+/* Workbench */
+.bench { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.qlist { display: grid; gap: 14px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 64px); }
+@media (max-width: 860px) { .qlist { position: static; } }
+.qgroup h3 { font: 500 11.5px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.qgroup ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.qgroup button { width: 100%; text-align: left; display: grid; grid-template-columns: 34px 1fr; gap: 6px; align-items: baseline; background: none; border: 0; border-radius: var(--radius); padding: 6px 8px; font: 14px/1.35 var(--font-body); color: var(--ink); cursor: pointer; }
+.qgroup button:hover { background: var(--sunken); }
+.qgroup button[aria-current="true"] { background: var(--accent-soft); }
+.qgroup button .n { font: 500 12.5px var(--font-mono); color: var(--accent); font-variant-numeric: tabular-nums; }
+@media (max-width: 860px) { .qgroup ol { grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); } }
+
+.pane { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.qhead h2 { font: 700 26px/1.15 var(--font-display); font-stretch: 85%; margin: 0 0 6px; text-wrap: balance; }
+.qhead p { margin: 0; max-width: 72ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip { font: 500 12px var(--font-mono); padding: 3px 8px; border-radius: 4px; background: var(--sunken); color: var(--muted); border: 1px solid var(--line); }
+.chip.star { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.editor { border: 1px solid var(--line); border-radius: var(--radius); background: var(--code-bg); overflow: hidden; }
+.editor .bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid var(--line); background: var(--surface); }
+.editor .bar .hint { font-size: 12.5px; color: var(--muted); }
+.editor .bar .actions { display: flex; gap: 8px; }
+textarea#sql { display: block; width: 100%; min-height: 160px; resize: vertical; border: 0; background: transparent; color: var(--ink); padding: 14px 16px; font-size: 13.5px; line-height: 1.6; tab-size: 4; white-space: pre; overflow: auto; }
+textarea#sql:focus { outline: none; }
+.resmeta { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; font: 13px var(--font-mono); color: var(--muted); }
+.resmeta .ok { color: var(--ok); }
+.resmeta .err { color: var(--alert); }
+.note { font-size: 13.5px; padding: 10px 12px; border-radius: var(--radius); background: var(--sunken); color: var(--muted); border: 1px solid var(--line); }
+.note.err { background: var(--alert-soft); color: var(--alert); border-color: transparent; font-family: var(--font-mono); font-size: 13px; white-space: pre-wrap; }
+.tablebox { overflow: auto; max-height: 520px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { position: sticky; top: 0; background: var(--sunken); font: 600 12px var(--font-mono); color: var(--muted); z-index: 1; }
+td { font-variant-numeric: tabular-nums; }
+td.num { text-align: right; font-family: var(--font-mono); font-size: 13px; }
+td.null { color: var(--muted); font-style: italic; }
+tr:last-child td { border-bottom: 0; }
+.pill { display: inline-block; font: 500 12px var(--font-mono); padding: 1px 7px; border-radius: 99px; }
+.pill.active { background: var(--alert-soft); color: var(--alert); }
+.pill.resolved, .pill.cleared { background: var(--ok-soft); color: var(--ok); }
+
+/* Data model */
+.section-intro { max-width: 72ch; margin: 0 0 18px; color: var(--muted); }
+h2.sec { font: 700 24px/1.2 var(--font-display); font-stretch: 85%; margin: 0 0 6px; }
+.paper { background: #ffffff; border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; overflow-x: auto; }
+.paper svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); margin: 10px 0 30px; }
+.tables { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 14px; }
+.tcard { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); min-width: 0; }
+.tcard header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--sunken); }
+.tcard header b { font: 600 14px var(--font-mono); }
+.tcard header span { font: 12px var(--font-mono); color: var(--muted); }
+.tcard ul { list-style: none; margin: 0; padding: 6px 0; }
+.tcard li { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 3px 12px; font: 13px var(--font-mono); }
+.tcard li .t { color: var(--muted); font-size: 12px; }
+.tcard li .k { display: inline-flex; gap: 4px; margin-left: 6px; }
+.kb { font: 600 10px var(--font-mono); padding: 0 4px; border-radius: 3px; vertical-align: 1px; }
+.kb.pk { background: var(--accent); color: var(--accent-ink); }
+.kb.fk { background: var(--sunken); color: var(--accent); border: 1px solid var(--line); }
+.tcard li.isp .c { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Integrity */
+.rules { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+.rule { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); padding: 12px 14px; display: grid; gap: 8px; min-width: 0; }
+.rule .top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.rule .top b { font-weight: 600; }
+.rule pre { margin: 0; padding: 10px 12px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 4px; font-size: 12.5px; overflow-x: auto; }
+.verdict { font: 500 12.5px var(--font-mono); white-space: pre-wrap; padding: 8px 10px; border-radius: 4px; background: var(--ok-soft); color: var(--ink); border-left: 3px solid var(--ok); }
+.verdict .tag { color: var(--ok); font-weight: 600; }
+.verdict.bad { background: var(--alert-soft); border-left-color: var(--alert); }
+.verdict.bad .tag { color: var(--alert); }
+.runall { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+.score { font: 600 14px var(--font-mono); }
+footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+footer .wrap { padding-block: 20px; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span>TUM Campus Heilbronn</span><span>Fundamentals of Databases</span><span>WS 2025/26</span></div>
+    <h1>Hospital Infection<br><em>Control Database</em></h1>
+    <p class="lede">PostgreSQL database for a hospital's infection control department. It stores outbreak cases, the patients and doctors involved, tests and evidence samples. The project goes from the EER diagram to the relational schema, constraints and SQL queries.</p>
+    <ul class="facts">
+      <li><b>9</b>tables + 1 view</li>
+      <li><b>1,066</b>CSV rows loaded</li>
+      <li><b>13</b>analytical queries</li>
+      <li><b>12</b>integrity rules tested</li>
+      <li><b>PG 16</b>PostgreSQL</li>
+    </ul>
+    <div class="links">
+      <span class="engine" id="engine" data-state="loading"><i></i><span id="engineText">Starting PostgreSQL in your browser...</span></span>
+      <a class="btn" id="repoLink" href="__REPO_URL__" target="_blank" rel="noopener">Source code on GitHub</a>
+      <a class="btn" href="__REPO_URL__/blob/main/docs/design.md" target="_blank" rel="noopener">Design document</a>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button role="tab" id="tab-queries" aria-controls="queries" aria-selected="true">Queries</button>
+    <button role="tab" id="tab-model" aria-controls="model" aria-selected="false">Data model</button>
+    <button role="tab" id="tab-integrity" aria-controls="integrity" aria-selected="false">Integrity rules</button>
+  </div>
+</nav>
+
+<main>
+  <section id="queries" role="tabpanel" aria-labelledby="tab-queries">
+    <div class="wrap bench">
+      <aside class="qlist" id="qlist" aria-label="Query index"></aside>
+      <div class="pane">
+        <div class="qhead">
+          <h2 id="qtitle"></h2>
+          <p id="qtext"></p>
+          <div class="chips" id="qchips"></div>
+        </div>
+        <div class="editor">
+          <div class="bar">
+            <span class="hint" id="editHint">SQL</span>
+            <div class="actions">
+              <button class="btn" id="resetBtn" type="button">Reset query</button>
+              <button class="btn primary" id="runBtn" type="button">Run query</button>
+            </div>
+          </div>
+          <textarea id="sql" spellcheck="false" aria-label="SQL query"></textarea>
+        </div>
+        <div class="resmeta" id="resmeta"></div>
+        <div id="resout"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="model" role="tabpanel" aria-labelledby="tab-model" hidden>
+    <div class="wrap">
+      <h2 class="sec">Conceptual model (EER)</h2>
+      <p class="section-intro">Made from the written requirements. Tests and evidence samples are weak entities of an infection case, and every person is either a doctor or a patient (total, disjoint specialization).</p>
+      <div class="paper">__EER_SVG__</div>
+      <div class="legend">
+        <span>Double box: weak entity</span><span>Double diamond: identifying relationship</span><span>Double line: total participation</span><span>Dashed: derived attribute</span><span>D: disjoint specialization</span>
+      </div>
+      <h2 class="sec">Relational schema</h2>
+      <p class="section-intro">Doctors and patients use the id of <code>people</code> as their key. Tests and samples have a composite foreign key to <code>case_patient</code>, so they can only point to patients who are in the same case.</p>
+      <div class="tables" id="tables"></div>
+    </div>
+  </section>
+
+  <section id="integrity" role="tabpanel" aria-labelledby="tab-integrity" hidden>
+    <div class="wrap">
+      <h2 class="sec">Try to break the rules</h2>
+      <p class="section-intro">Each statement below breaks one rule from the requirements. The schema should reject all of them by itself, through keys and constraints. Every attempt is rolled back afterwards.</p>
+      <div class="runall"><button class="btn primary" id="runAll" type="button">Run all 12</button><span class="score" id="score"></span></div>
+      <div class="rules" id="rules"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Shuyuan Wang</span>
+    <span>Synthetic data provided by the course. No real patient information.</span>
+  </div>
+</footer>
+
+<script>
+const QUERIES = /*__QUERIES__*/[];
+const RULES = /*__RULES__*/[];
+const TABLES = /*__TABLES__*/[];
+const SCHEMA_SQL = /*__SCHEMA_SQL__*/"";
+const SEED_SQL = /*__SEED_SQL__*/"";
+const PGLITE_URL = "https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.2.17/dist/index.js";
+
+let db = null;           // PGlite instance when live
+let mode = "loading";    // loading | live | snapshot
+let current = QUERIES[0];
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* ---------- Engine ---------- */
+function setEngine(state, text) {
+  mode = state; $("engine").dataset.state = state; $("engineText").textContent = text;
+  $("editHint").textContent = state === "live"
+    ? "You can edit the SQL and run it (Ctrl/Cmd + Enter)."
+    : state === "snapshot" ? "Saved results. Editing works on the GitHub Pages version." : "SQL";
+}
+async function boot() {
+  const timeout = new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 25000));
+  try {
+    const mod = await Promise.race([import(PGLITE_URL), timeout]);
+    const pg = new mod.PGlite();
+    await Promise.race([pg.waitReady, timeout]);
+    await pg.exec(SCHEMA_SQL);
+    await pg.exec(SEED_SQL);
+    db = pg;
+    setEngine("live", "PostgreSQL running in your browser");
+    run();
+  } catch (e) {
+    console.info("Live engine unavailable, using snapshot:", e && e.message);
+    setEngine("snapshot", "Saved results from PostgreSQL 16");
+  }
+}
+const PARSERS = { 1082: (v) => v, 1114: (v) => v, 1184: (v) => v, 1700: (v) => v };
+async function execLive(sql) {
+  const t0 = performance.now();
+  const results = await db.exec(sql, { rowMode: "array", parsers: PARSERS });
+  const ms = performance.now() - t0;
+  const last = [...results].reverse().find((r) => r.fields && r.fields.length) || results[results.length - 1];
+  return { columns: (last?.fields || []).map((f) => f.name), rows: last?.rows || [], affected: last?.affectedRows, ms };
+}
+
+/* ---------- Query index ---------- */
+function renderList() {
+  const groups = [["Assignment", QUERIES.filter((q) => q.n <= 10)], ["Extra queries", QUERIES.filter((q) => q.n > 10)]];
+  $("qlist").innerHTML = groups.map(([name, qs]) => `
+    <div class="qgroup"><h3>${name}</h3><ol>${qs.map((q) => `
+      <li><button type="button" data-n="${q.n}"><span class="n">Q${q.n}</span><span>${esc(shortTitle(q))}</span></button></li>`).join("")}
+    </ol></div>`).join("");
+  $("qlist").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-n]"); if (!b) return;
+    select(+b.dataset.n, true);
+  });
+}
+const SHORT = { 1: "Patients, doctors, tests per case", 2: "Wards with > 2 cases", 3: "Repeat patients in Q2 2024",
+  4: "Co-workers of the busiest doctor", 5: "Doctors in the 10th percentile", 6: "Active cases and lead doctors",
+  7: "Cases per infection type", 8: "Top cases by samples", 9: "Active sources in > 2 cases", 10: "Doctors with > 8 tests" };
+const shortTitle = (q) => q.title || SHORT[q.n] || `Query ${q.n}`;
+
+function select(n, focus) {
+  current = QUERIES.find((q) => q.n === n) || QUERIES[0];
+  document.querySelectorAll(".qgroup button").forEach((b) => b.setAttribute("aria-current", String(+b.dataset.n === current.n)));
+  $("qtitle").textContent = `Query ${current.n}: ${shortTitle(current)}`;
+  $("qtext").textContent = current.question;
+  const tech = current.technique ? current.technique.replace(/\.$/, "").split(/,\s*(?![^()]*\))/) : [];
+  $("qchips").innerHTML = (current.n > 10 ? `<span class="chip star">extra query</span>` : "") +
+    tech.map((t) => `<span class="chip">${esc(t.trim())}</span>`).join("");
+  $("sql").value = current.sql;
+  fitEditor();
+  run();
+  if (focus && window.matchMedia("(max-width: 860px)").matches) $("qtitle").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+function fitEditor() { const t = $("sql"); t.style.height = "auto"; t.style.height = Math.min(t.scrollHeight + 4, 520) + "px"; }
+
+/* ---------- Run ---------- */
+async function run() {
+  const sql = $("sql").value;
+  if (mode === "live") {
+    try {
+      const r = await execLive(sql);
+      showResult(r.columns, r.rows, `${r.rows.length} row${r.rows.length === 1 ? "" : "s"}, ${r.ms.toFixed(1)} ms`, r.affected);
+    } catch (e) {
+      $("resmeta").innerHTML = `<span class="err">Query failed</span>`;
+      $("resout").innerHTML = `<div class="note err">${esc(e.message)}</div>`;
+    }
+    return;
+  }
+  if (sql.trim() !== current.sql.trim()) {
+    $("resmeta").innerHTML = "";
+    const live = "__PAGES_URL__".includes("shuyuanwang0502-eng") ? "the GitHub Pages version" : `the <a href="__PAGES_URL__" target="_blank" rel="noopener">live version</a>`;
+    $("resout").innerHTML = `<div class="note">This view shows saved results, so edited SQL can't run here. Open ${live} to run your own SQL on PostgreSQL in the browser, or press Reset query.</div>`;
+    return;
+  }
+  showResult(current.columns, current.rows, `${current.rows.length} row${current.rows.length === 1 ? "" : "s"} (saved result)`);
+}
+function fmt(col, v) {
+  if (v === null || v === undefined || v === "") return [`<td class="null">null</td>`];
+  const s = String(v);
+  if (/status$/.test(col) && /^(active|resolved|cleared)$/.test(s)) return [`<td><span class="pill ${s}">${s}</span></td>`];
+  if (/^-?\d+(\.\d+)?$/.test(s) && !/(_id|^id|case_[ab])$/.test(col)) return [`<td class="num">${esc(s)}</td>`];
+  return [`<td>${esc(s)}</td>`];
+}
+function showResult(columns, rows, meta, affected) {
+  $("resmeta").innerHTML = `<span>${esc(meta)}</span>`;
+  if (!columns.length) { $("resout").innerHTML = `<div class="note">Statement executed${affected != null ? `, ${affected} row(s) affected` : ""}.</div>`; return; }
+  $("resout").innerHTML = `<div class="tablebox"><table><thead><tr>${columns.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead>
+    <tbody>${rows.map((r) => `<tr>${columns.map((c, i) => fmt(c, Array.isArray(r) ? r[i] : r[c]).join("")).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+
+/* ---------- Data model ---------- */
+function renderTables() {
+  $("tables").innerHTML = TABLES.map((t) => `
+    <article class="tcard"><header><b>${t.table_name}</b><span>${t.rows.toLocaleString("en")} rows</span></header>
+    <ul>${t.cols.map((c) => `<li class="${c.pk ? "isp" : ""}"><span><span class="c">${esc(c.col)}</span><span class="k">${c.pk ? '<span class="kb pk">PK</span>' : ""}${c.fk ? `<span class="kb fk" title="references ${esc(c.fk)}">FK ${esc(c.fk.split(",").join(", "))}</span>` : ""}</span></span><span class="t">${esc(c.type.replace("timestamp without time zone", "timestamp").replace("integer", "int"))}${c.null ? "" : " not null"}</span></li>`).join("")}</ul></article>`).join("");
+}
+
+/* ---------- Integrity rules ---------- */
+function renderRules() {
+  $("rules").innerHTML = RULES.map((r, i) => `
+    <div class="rule" id="rule-${i}">
+      <div class="top"><b>${esc(r.rule)}</b><button class="btn" type="button" data-i="${i}">Run</button></div>
+      <pre><code>${esc(r.sql)}</code></pre>
+      <div class="out" aria-live="polite"></div>
+    </div>`).join("");
+  $("rules").addEventListener("click", (e) => { const b = e.target.closest("button[data-i]"); if (b) attempt(+b.dataset.i); });
+  $("runAll").addEventListener("click", async () => {
+    let ok = 0; for (let i = 0; i < RULES.length; i++) ok += (await attempt(i)) ? 1 : 0;
+    $("score").textContent = `${ok} of ${RULES.length} rejected`;
+  });
+}
+async function attempt(i) {
+  const r = RULES[i]; const out = document.querySelector(`#rule-${i} .out`);
+  let rejected, msg, detail;
+  if (mode === "live") {
+    try { await db.exec("BEGIN"); await db.exec(r.sql); rejected = false; msg = "Statement was accepted."; }
+    catch (e) { rejected = true; msg = e.message; detail = e.detail || ""; }
+    finally { try { await db.exec("ROLLBACK"); } catch (_) {} }
+  } else { rejected = true; msg = r.error; detail = r.detail; }
+  out.innerHTML = `<div class="verdict ${rejected ? "" : "bad"}"><span class="tag">${rejected ? "REJECTED" : "ACCEPTED"}</span>  ERROR: ${esc(msg)}${detail ? `\nDETAIL: ${esc(detail)}` : ""}${mode !== "live" ? "\n(saved output from PostgreSQL 16)" : ""}</div>`;
+  return rejected;
+}
+
+/* ---------- Tabs ---------- */
+const TABS = ["queries", "model", "integrity"];
+function showTab(id) {
+  TABS.forEach((t) => { $(t).hidden = t !== id; $("tab-" + t).setAttribute("aria-selected", String(t === id)); });
+  try { history.replaceState(null, "", "#" + id); } catch (_) {}
+}
+TABS.forEach((t) => $("tab-" + t).addEventListener("click", () => showTab(t)));
+
+/* ---------- Init ---------- */
+document.querySelectorAll('a[href*="shuyuanwang0502-eng"]').forEach((a) => { if (a.closest(".links")) a.hidden = true; });
+$("runBtn").addEventListener("click", run);
+$("resetBtn").addEventListener("click", () => { $("sql").value = current.sql; fitEditor(); run(); });
+$("sql").addEventListener("keydown", (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") { e.preventDefault(); run(); }
+  if (e.key === "Tab" && !e.shiftKey) { e.preventDefault(); const t = e.target, s = t.selectionStart; t.setRangeText("    ", s, t.selectionEnd, "end"); }
+});
+$("sql").addEventListener("input", fitEditor);
+renderList(); renderTables(); renderRules(); select(1);
+const initial = (location.hash || "").slice(1);
+if (TABS.includes(initial)) showTab(initial);
+boot();
+</script>

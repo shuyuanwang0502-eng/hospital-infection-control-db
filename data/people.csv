@@ -1,0 +1,201 @@
+id,first_name,last_name,phone_number,street,city,zip,role,department,rank,date_of_birth,ward,admission_date,discharge_date
+30000,Jonas,Hartmann,+49895614226,Ringstr. 29,Munich,80142,1,Microbiology,Assistant,,,,
+30001,David,Khan,+49898078673,Klinikstr. 4,Munich,80095,1,Internal Medicine,Assistant,,,,
+30002,Nora,Wolf,+49891445199,Hauptstr. 26,Munich,80733,1,Microbiology,Chief,,,,
+30003,David,Zimmermann,+49894698379,Bergstr. 76,Munich,80284,1,Infectious Diseases,Assistant,,,,
+30004,Max,Hale,+49895661907,Isarallee 28,Munich,80980,1,Intensive Care,Assistant,,,,
+30005,Aisha,Schneider,+49892622631,Rosenstr. 45,Munich,80618,1,Intensive Care,Assistant,,,,
+30006,Sara,Koch,+49893094235,Gartenweg 11,Munich,80565,1,Intensive Care,Chief,,,,
+30007,Paul,Wagner,+49894226067,Seestr. 9,Munich,80046,1,Microbiology,Assistant,,,,
+30008,Mira,Khan,+49894905582,Ärzteweg 49,Munich,80284,1,Pediatrics,Chief,,,,
+30009,Victor,Brandt,+49897210606,Rosenstr. 27,Munich,80686,1,Intensive Care,Chief,,,,
+30010,Aisha,Wolf,+49893871230,Hauptstr. 94,Munich,80250,1,Internal Medicine,Senior,,,,
+30011,Anna,Becker,+49894684531,Parkweg 42,Munich,80863,1,Infectious Diseases,Assistant,,,,
+30012,Lukas,Hale,+49897730428,Lindenweg 9,Munich,80216,1,Emergency,Chief,,,,
+30013,Lea,Lopez,+49899375710,Gartenweg 83,Munich,80469,1,Internal Medicine,Senior,,,,
+30014,Julia,Fischer,+49895408072,Seestr. 75,Munich,80438,1,Emergency,Senior,,,,
+30015,Victor,Fischer,+49893320821,Hauptstr. 64,Munich,80093,1,Infectious Diseases,Assistant,,,,
+30016,Julia,Brandt,+49898082668,Bahnhofstr. 9,Munich,80394,1,Pediatrics,Chief,,,,
+30017,Sara,Hoffmann,+49895218028,Hauptstr. 2,Munich,80696,1,Microbiology,Assistant,,,,
+30018,David,Becker,+49896707197,Ärzteweg 38,Munich,80445,1,Internal Medicine,Senior,,,,
+30019,Emilia,Becker,+49899398441,Isarallee 65,Munich,80934,1,Infectious Diseases,Chief,,,,
+30020,Mira,Hoffmann,+49894337174,Isarallee 48,Munich,80780,1,Internal Medicine,Chief,,,,
+30021,Nora,Hartmann,+49896438436,Bergstr. 3,Munich,80114,1,Intensive Care,Senior,,,,
+30022,Tobias,Meyer,+49895041154,Bahnhofstr. 11,Munich,80087,1,Microbiology,Senior,,,,
+30023,Aisha,Koch,+49893109911,Isarallee 85,Munich,80486,1,Emergency,Assistant,,,,
+30024,Carla,Hoffmann,+49898099076,Ringstr. 70,Munich,80773,1,Microbiology,Chief,,,,
+30025,Elena,Novak,+49897693979,Parkweg 84,Munich,80382,1,Pediatrics,Chief,,,,
+30026,Sara,Schmidt,+49895159166,Ringstr. 9,Munich,80346,1,Infectious Diseases,Chief,,,,
+30027,David,Fischer,+49894694634,Klinikstr. 10,Munich,80724,1,Microbiology,Assistant,,,,
+30028,Tobias,Khan,+49891527021,Rosenstr. 10,Munich,80526,1,Internal Medicine,Senior,,,,
+30029,Felix,Lopez,+49893219824,Seestr. 74,Munich,80590,1,Pediatrics,Assistant,,,,
+30030,Felix,Zimmermann,+49894194548,Ärzteweg 13,Munich,80674,1,Pediatrics,Senior,,,,
+30031,Max,Zimmermann,+49898835373,Seestr. 7,Munich,80689,1,Microbiology,Chief,,,,
+30032,Jonas,Meyer,+49897754864,Seestr. 44,Munich,80819,1,Infectious Diseases,Assistant,,,,
+30033,Elena,Lopez,+49899997381,Bergstr. 18,Munich,80432,1,Internal Medicine,Senior,,,,
+30034,Sara,Fischer,+49892264748,Bergstr. 71,Munich,80100,1,Infectious Diseases,Chief,,,,
+30035,David,Hartmann,+49892564689,Ringstr. 22,Munich,80416,1,Pediatrics,Senior,,,,
+30036,Elena,Schneider,+49891983738,Isarallee 49,Munich,80002,1,Pediatrics,Senior,,,,
+30037,Sara,Novak,+49898096887,Seestr. 94,Munich,80802,1,Emergency,Chief,,,,
+30038,Felix,Reuter,+49894185957,Lindenweg 28,Munich,80991,1,Infectious Diseases,Chief,,,,
+30039,David,Meyer,+49896261415,Klinikstr. 7,Munich,80598,1,Pediatrics,Chief,,,,
+30040,Nora,Brandt,+49891954280,Hauptstr. 11,Munich,80871,1,Internal Medicine,Assistant,,,,
+30041,Paul,Khan,+49894946066,Gartenweg 16,Munich,80964,1,Emergency,Assistant,,,,
+30042,Laura,Wolf,+49891666754,Bahnhofstr. 11,Munich,80429,1,Microbiology,Chief,,,,
+30043,Laura,Hoffmann,+49896307805,Lindenweg 27,Munich,80685,1,Microbiology,Senior,,,,
+30044,Tobias,Becker,+49897640184,Isarallee 86,Munich,80660,1,Intensive Care,Senior,,,,
+30045,Lea,Khan,+49891156287,Bergstr. 80,Munich,80576,1,Infectious Diseases,Assistant,,,,
+30046,David,Lopez,+49899487336,Lindenweg 17,Munich,80955,1,Intensive Care,Assistant,,,,
+30047,Tobias,Wagner,+49895781295,Isarallee 57,Munich,80853,1,Emergency,Chief,,,,
+30048,Mira,Wolf,+49899874152,Klinikstr. 86,Munich,80836,1,Emergency,Senior,,,,
+30049,Jonas,Reuter,+49895437001,Ärzteweg 14,Munich,80760,1,Emergency,Assistant,,,,
+30050,Carla,Novak,+49894533779,Seestr. 44,Munich,80208,1,Microbiology,Chief,,,,
+30051,Carla,Hoffmann,+49899196204,Lindenweg 7,Munich,80094,1,Microbiology,Senior,,,,
+30052,Carla,Meyer,+49891059486,Rosenstr. 99,Munich,80133,1,Microbiology,Senior,,,,
+30053,Marco,Klein,+49898175395,Hauptstr. 2,Munich,80114,1,Infectious Diseases,Chief,,,,
+30054,Julia,Koch,+49891604451,Rosenstr. 75,Munich,80565,1,Internal Medicine,Senior,,,,
+30055,Julia,Meyer,+49896171716,Rosenstr. 6,Munich,80920,1,Intensive Care,Assistant,,,,
+30056,Tobias,Schmidt,+49896933742,Hauptstr. 53,Munich,80997,1,Emergency,Chief,,,,
+30057,Julia,Fischer,+49893726327,Isarallee 53,Munich,80025,1,Internal Medicine,Chief,,,,
+30058,Lea,Zimmermann,+49895163555,Lindenweg 21,Munich,80806,1,Microbiology,Assistant,,,,
+30059,Anna,Meyer,+49898896868,Ringstr. 26,Munich,80836,1,Pediatrics,Senior,,,,
+30060,Mira,Fischer,+49894740036,Klinikstr. 85,Munich,80197,1,Pediatrics,Senior,,,,
+30061,Carla,Khan,+49895682940,Rosenstr. 83,Munich,80521,1,Pediatrics,Chief,,,,
+30062,David,Hale,+49891463060,Ärzteweg 34,Munich,80182,1,Emergency,Senior,,,,
+30063,Lukas,Schmidt,+49898290770,Rosenstr. 94,Munich,80805,1,Intensive Care,Senior,,,,
+30064,Paul,Hoffmann,+49892940214,Gartenweg 74,Munich,80194,1,Intensive Care,Assistant,,,,
+30065,Max,Hartmann,+49899722815,Hauptstr. 88,Munich,80736,1,Microbiology,Chief,,,,
+30066,Elena,Wagner,+49898235969,Ärzteweg 86,Munich,80942,1,Intensive Care,Chief,,,,
+30067,Lea,Schmidt,+49896038571,Hauptstr. 40,Munich,80682,1,Pediatrics,Senior,,,,
+30068,Anna,Novak,+49893135534,Ringstr. 54,Munich,80680,1,Pediatrics,Chief,,,,
+30069,Marco,Wolf,+49896049101,Gartenweg 71,Munich,80853,1,Infectious Diseases,Senior,,,,
+30070,Mira,Lopez,+49898212326,Bahnhofstr. 78,Munich,80670,1,Intensive Care,Senior,,,,
+30071,Sara,Klein,+49894585314,Hauptstr. 61,Munich,80812,1,Microbiology,Assistant,,,,
+30072,Aisha,Novak,+49899647849,Parkweg 82,Munich,80634,1,Intensive Care,Assistant,,,,
+30073,Tobias,Novak,+49894768844,Ringstr. 19,Munich,80025,1,Infectious Diseases,Assistant,,,,
+30074,Felix,Wolf,+49892221854,Bergstr. 54,Munich,80907,1,Microbiology,Chief,,,,
+30075,Elena,Schneider,+49899294272,Gartenweg 32,Munich,80151,1,Microbiology,Chief,,,,
+30076,Emilia,Schmidt,+49898132769,Ringstr. 23,Munich,80823,1,Microbiology,Chief,,,,
+30077,Sara,Meyer,+49895180853,Ärzteweg 59,Munich,80136,1,Pediatrics,Chief,,,,
+30078,Nora,Koch,+49896323376,Bergstr. 79,Munich,80834,1,Microbiology,Chief,,,,
+30079,Max,Koch,+49898481188,Isarallee 96,Munich,80882,1,Pediatrics,Senior,,,,
+30080,Carla,Fischer,+49895652512,Hauptstr. 63,Munich,80641,2,,,1961-06-18,Internal Medicine,2024-04-26,2024-05-06
+30081,Tobias,Becker,+49896634586,Rosenstr. 70,Munich,80082,2,,,1952-05-31,Pediatrics,2024-03-30,2024-04-04
+30082,Elena,Khan,+49897960328,Gartenweg 43,Munich,80555,2,,,1981-10-19,Oncology,2024-03-08,2024-03-22
+30083,Anna,Richter,+49891327691,Bahnhofstr. 49,Munich,80488,2,,,1940-07-12,Internal Medicine,2024-04-08,
+30084,Max,Koch,+49894700025,Bergstr. 29,Munich,80279,2,,,1979-02-06,Oncology,2024-03-04,2024-03-17
+30085,Marco,Klein,+49893141239,Bahnhofstr. 69,Munich,80027,2,,,1975-05-08,Surgery,2024-05-12,
+30086,Aisha,Zimmermann,+49893276659,Bergstr. 24,Munich,80051,2,,,1963-05-04,Oncology,2024-04-11,2024-04-22
+30087,Lea,Schneider,+49895668371,Gartenweg 33,Munich,80854,2,,,1947-05-07,Oncology,2024-03-03,
+30088,Lukas,Wagner,+49894761823,Parkweg 9,Munich,80799,2,,,1998-06-21,ICU,2024-06-05,2024-06-13
+30089,Elena,Hartmann,+49893556551,Ringstr. 17,Munich,80484,2,,,2000-01-22,ICU,2024-05-12,
+30090,Sara,Becker,+49897189034,Isarallee 78,Munich,80621,2,,,2007-02-06,Emergency,2024-03-15,
+30091,Marco,Novak,+49892813596,Bahnhofstr. 4,Munich,80951,2,,,1967-12-27,Surgery,2024-05-26,
+30092,Anna,Schneider,+49894327421,Ärzteweg 76,Munich,80707,2,,,2014-07-07,Emergency,2024-04-01,2024-04-11
+30093,Paul,Schmidt,+49891689025,Rosenstr. 69,Munich,80438,2,,,1999-05-07,Internal Medicine,2024-03-09,
+30094,Lea,Hartmann,+49898047416,Bergstr. 14,Munich,80443,2,,,1972-06-29,Emergency,2024-06-23,
+30095,Julia,Zimmermann,+49893955087,Seestr. 67,Munich,80988,2,,,1998-05-10,Internal Medicine,2024-05-18,
+30096,David,Bauer,+49898799287,Gartenweg 94,Munich,80606,2,,,1964-01-29,Internal Medicine,2024-06-18,2024-06-21
+30097,Carla,Klein,+49895091349,Bergstr. 73,Munich,80624,2,,,1999-12-12,Oncology,2024-04-13,2024-04-24
+30098,Marco,Bauer,+49894558780,Rosenstr. 34,Munich,80348,2,,,1965-02-01,Surgery,2024-05-29,
+30099,David,Hartmann,+49899667566,Ringstr. 11,Munich,80247,2,,,2004-08-07,Oncology,2024-05-02,
+30100,Tobias,Bauer,+49899234615,Bergstr. 3,Munich,80095,2,,,1966-05-25,Pediatrics,2024-04-21,
+30101,Mira,Richter,+49897191135,Bergstr. 71,Munich,80543,2,,,1970-11-03,Oncology,2024-06-04,
+30102,Victor,Klein,+49895545223,Lindenweg 33,Munich,80236,2,,,1950-10-28,Emergency,2024-03-25,2024-04-12
+30103,Marco,Lopez,+49894630331,Seestr. 62,Munich,80283,2,,,2005-01-02,Surgery,2024-06-06,
+30104,Mira,Schmidt,+49894256752,Lindenweg 30,Munich,80369,2,,,1956-02-05,Internal Medicine,2024-03-02,
+30105,Julia,Becker,+49891763626,Klinikstr. 71,Munich,80299,2,,,2002-07-26,Pediatrics,2024-05-21,
+30106,Felix,Schmidt,+49891205779,Bahnhofstr. 37,Munich,80480,2,,,1982-12-12,Oncology,2024-04-13,2024-04-15
+30107,Carla,Bauer,+49892914064,Ärzteweg 52,Munich,80503,2,,,1946-08-24,Surgery,2024-05-20,
+30108,Julia,Reuter,+49896097514,Ärzteweg 32,Munich,80121,2,,,1990-01-24,Oncology,2024-05-17,
+30109,Paul,Fischer,+49899767312,Gartenweg 58,Munich,80930,2,,,1979-09-20,Internal Medicine,2024-06-19,
+30110,Max,Novak,+49892010496,Bahnhofstr. 95,Munich,80101,2,,,2008-06-05,Pediatrics,2024-05-20,2024-05-23
+30111,Marco,Fischer,+49893916107,Hauptstr. 10,Munich,80160,2,,,1940-03-28,Oncology,2024-04-27,
+30112,Felix,Novak,+49891547605,Ringstr. 37,Munich,80723,2,,,1965-05-13,Emergency,2024-06-19,2024-06-27
+30113,Carla,Richter,+49894318855,Gartenweg 15,Munich,80557,2,,,1960-03-02,Emergency,2024-03-20,
+30114,Julia,Khan,+49892000560,Isarallee 40,Munich,80609,2,,,2007-03-11,Surgery,2024-06-26,2024-06-30
+30115,Sara,Novak,+49897752972,Lindenweg 65,Munich,80552,2,,,1984-04-19,Oncology,2024-03-11,
+30116,Max,Hale,+49895200476,Klinikstr. 12,Munich,80234,2,,,2000-06-29,Surgery,2024-05-15,
+30117,Carla,Richter,+49891674975,Isarallee 61,Munich,80531,2,,,1998-06-13,Oncology,2024-06-26,2024-07-15
+30118,Max,Bauer,+49892530793,Bergstr. 45,Munich,80418,2,,,1969-11-25,Internal Medicine,2024-05-25,2024-05-31
+30119,Lea,Zimmermann,+49899312590,Lindenweg 85,Munich,80967,2,,,1975-12-05,Surgery,2024-03-05,2024-03-16
+30120,Carla,Hale,+49892944841,Gartenweg 66,Munich,80844,2,,,1940-02-07,Emergency,2024-06-20,
+30121,Max,Meyer,+49894147112,Hauptstr. 47,Munich,80637,2,,,2007-11-12,Oncology,2024-05-20,2024-05-22
+30122,Elena,Becker,+49893198037,Lindenweg 57,Munich,80901,2,,,2002-08-23,Oncology,2024-03-16,2024-04-05
+30123,Tobias,Brandt,+49896213522,Hauptstr. 2,Munich,80565,2,,,1976-08-08,ICU,2024-03-29,
+30124,Jonas,Klein,+49892970754,Parkweg 20,Munich,80510,2,,,2004-04-15,Internal Medicine,2024-05-05,
+30125,Max,Bauer,+49898922533,Ringstr. 59,Munich,80564,2,,,1952-12-22,Oncology,2024-03-25,
+30126,Nora,Reuter,+49892171218,Lindenweg 99,Munich,80808,2,,,2016-08-26,Oncology,2024-04-13,
+30127,Nora,Becker,+49891043037,Lindenweg 93,Munich,80305,2,,,2015-02-18,Surgery,2024-05-14,
+30128,Felix,Reuter,+49898491822,Hauptstr. 62,Munich,80353,2,,,1969-10-28,Surgery,2024-06-06,
+30129,Sara,Hale,+49894165061,Seestr. 31,Munich,80585,2,,,1974-05-11,Pediatrics,2024-06-18,
+30130,Lukas,Hale,+49898935224,Seestr. 49,Munich,80395,2,,,1999-07-17,Emergency,2024-03-20,2024-03-22
+30131,Julia,Hoffmann,+49896569946,Ärzteweg 57,Munich,80102,2,,,1987-03-09,Oncology,2024-03-02,
+30132,Max,Reuter,+49892255409,Bergstr. 34,Munich,80346,2,,,1995-11-30,Emergency,2024-04-20,
+30133,Lea,Koch,+49897375499,Rosenstr. 81,Munich,80735,2,,,2008-02-17,Oncology,2024-06-20,
+30134,Paul,Khan,+49894938791,Parkweg 88,Munich,80943,2,,,1965-10-12,Pediatrics,2024-06-04,2024-06-08
+30135,Jonas,Klein,+49893791137,Seestr. 39,Munich,80925,2,,,1942-08-06,ICU,2024-04-11,
+30136,Mira,Wagner,+49897288789,Gartenweg 19,Munich,80250,2,,,1987-08-27,Oncology,2024-05-12,
+30137,Marco,Brandt,+49893937176,Ärzteweg 79,Munich,80891,2,,,1974-04-27,Surgery,2024-05-27,2024-06-15
+30138,Julia,Fischer,+49898736811,Parkweg 33,Munich,80470,2,,,1962-11-27,Emergency,2024-03-02,
+30139,Sara,Novak,+49893650391,Ärzteweg 57,Munich,80967,2,,,1971-01-01,Surgery,2024-04-08,
+30140,Max,Becker,+49898664433,Lindenweg 26,Munich,80393,2,,,2016-07-22,Oncology,2024-03-14,2024-04-02
+30141,Victor,Richter,+49895963914,Seestr. 38,Munich,80022,2,,,2014-06-19,Emergency,2024-04-20,2024-05-09
+30142,Lukas,Wolf,+49899333700,Lindenweg 30,Munich,80621,2,,,2011-12-11,Internal Medicine,2024-03-29,
+30143,Paul,Becker,+49893294774,Parkweg 13,Munich,80925,2,,,1996-04-16,Emergency,2024-03-06,2024-03-21
+30144,Lukas,Richter,+49897121355,Seestr. 17,Munich,80092,2,,,1966-06-23,Internal Medicine,2024-06-04,2024-06-11
+30145,Julia,Koch,+49897138070,Hauptstr. 65,Munich,80935,2,,,1964-06-13,Pediatrics,2024-04-02,
+30146,Felix,Novak,+49896682698,Ärzteweg 60,Munich,80986,2,,,1946-10-03,Pediatrics,2024-06-05,
+30147,Anna,Koch,+49897136687,Ärzteweg 51,Munich,80014,2,,,1963-09-22,Surgery,2024-03-16,2024-03-25
+30148,Laura,Schneider,+49897232293,Ärzteweg 87,Munich,80239,2,,,1982-04-19,ICU,2024-05-19,
+30149,David,Hale,+49894713925,Parkweg 9,Munich,80650,2,,,2013-11-29,Oncology,2024-06-25,
+30150,Max,Schmidt,+49893345069,Klinikstr. 5,Munich,80311,2,,,1984-03-12,ICU,2024-03-13,2024-03-31
+30151,Julia,Schneider,+49898610879,Rosenstr. 86,Munich,80972,2,,,2006-09-02,Emergency,2024-06-30,
+30152,Laura,Reuter,+49897960607,Parkweg 13,Munich,80853,2,,,1983-11-25,Surgery,2024-04-22,
+30153,Carla,Meyer,+49897216461,Ringstr. 57,Munich,80455,2,,,1961-03-07,Internal Medicine,2024-03-13,
+30154,Victor,Koch,+49897017548,Klinikstr. 51,Munich,80282,2,,,1957-01-10,ICU,2024-06-30,
+30155,Sara,Khan,+49894558545,Parkweg 82,Munich,80611,2,,,1941-11-30,ICU,2024-06-09,2024-06-14
+30156,Laura,Lopez,+49892151087,Hauptstr. 27,Munich,80600,2,,,1959-05-17,Pediatrics,2024-04-12,
+30157,Paul,Hartmann,+49895651899,Isarallee 17,Munich,80553,2,,,1962-06-27,Pediatrics,2024-03-15,
+30158,Emilia,Reuter,+49891249314,Rosenstr. 31,Munich,80602,2,,,1969-01-17,ICU,2024-03-23,2024-03-28
+30159,Max,Hoffmann,+49892906718,Seestr. 9,Munich,80487,2,,,1980-03-20,Internal Medicine,2024-05-05,
+30160,Sara,Hoffmann,+49894716988,Bahnhofstr. 6,Munich,80744,2,,,2010-04-07,Emergency,2024-05-06,2024-05-07
+30161,Lukas,Bauer,+49897738019,Gartenweg 88,Munich,80110,2,,,1983-12-26,Emergency,2024-06-25,2024-06-28
+30162,Lea,Wolf,+49893488628,Ärzteweg 17,Munich,80281,2,,,1996-01-04,Emergency,2024-05-14,
+30163,Lea,Schneider,+49899901266,Lindenweg 59,Munich,80517,2,,,1994-04-25,Oncology,2024-03-13,
+30164,Jonas,Koch,+49894607488,Gartenweg 58,Munich,80909,2,,,1960-07-01,Oncology,2024-04-13,
+30165,Anna,Zimmermann,+49892595275,Rosenstr. 55,Munich,80320,2,,,1999-09-02,Internal Medicine,2024-04-17,
+30166,Felix,Khan,+49892530497,Ärzteweg 12,Munich,80442,2,,,1948-08-30,Emergency,2024-06-03,2024-06-08
+30167,David,Meyer,+49896530541,Parkweg 16,Munich,80420,2,,,1971-09-21,Emergency,2024-06-29,
+30168,Lukas,Novak,+49896242022,Rosenstr. 14,Munich,80591,2,,,1985-07-09,Pediatrics,2024-03-20,
+30169,Tobias,Schmidt,+49896873938,Hauptstr. 48,Munich,80117,2,,,2008-06-01,Internal Medicine,2024-05-13,2024-05-27
+30170,David,Wolf,+49891440466,Bahnhofstr. 85,Munich,80849,2,,,2002-03-19,Internal Medicine,2024-03-04,2024-03-14
+30171,Lea,Wagner,+49891102438,Isarallee 19,Munich,80579,2,,,1998-12-21,Oncology,2024-03-09,2024-03-10
+30172,Aisha,Hoffmann,+49894609330,Gartenweg 54,Munich,80464,2,,,1970-08-01,Pediatrics,2024-04-17,2024-04-28
+30173,Laura,Wolf,+49892425342,Klinikstr. 20,Munich,80161,2,,,2007-09-07,Surgery,2024-03-07,
+30174,Carla,Klein,+49898113787,Bergstr. 78,Munich,80452,2,,,1977-02-26,Internal Medicine,2024-03-28,
+30175,Jonas,Wagner,+49898212753,Ärzteweg 37,Munich,80694,2,,,2000-11-13,Surgery,2024-05-02,
+30176,Mira,Meyer,+49894699685,Gartenweg 77,Munich,80056,2,,,1940-09-08,Pediatrics,2024-04-08,
+30177,Julia,Becker,+49895856117,Rosenstr. 16,Munich,80007,2,,,1984-08-15,Emergency,2024-04-25,2024-05-08
+30178,David,Fischer,+49899393009,Hauptstr. 86,Munich,80825,2,,,1971-10-10,ICU,2024-04-20,
+30179,Lukas,Zimmermann,+49891314430,Bergstr. 10,Munich,80882,2,,,1968-02-01,Surgery,2024-04-24,
+30180,Max,Novak,+49892932288,Gartenweg 3,Munich,80989,2,,,1969-02-19,Pediatrics,2024-06-11,
+30181,Sara,Wagner,+49892478574,Gartenweg 14,Munich,80249,2,,,1979-02-01,Surgery,2024-04-21,
+30182,Anna,Novak,+49896696087,Ringstr. 43,Munich,80797,2,,,1955-01-31,ICU,2024-05-05,
+30183,Nora,Hoffmann,+49894253164,Rosenstr. 45,Munich,80744,2,,,2013-06-21,Emergency,2024-06-13,2024-06-17
+30184,Julia,Becker,+49894309671,Isarallee 78,Munich,80156,2,,,2008-03-14,Emergency,2024-03-10,2024-03-26
+30185,Sara,Richter,+49898531380,Parkweg 73,Munich,80658,2,,,1996-12-29,Surgery,2024-04-11,
+30186,Lea,Reuter,+49898377995,Ärzteweg 61,Munich,80452,2,,,1996-08-23,Internal Medicine,2024-06-10,2024-06-12
+30187,Victor,Hoffmann,+49892244712,Lindenweg 60,Munich,80462,2,,,1943-05-17,ICU,2024-04-17,
+30188,Aisha,Khan,+49899507186,Gartenweg 60,Munich,80594,2,,,1989-09-23,Emergency,2024-06-23,2024-07-12
+30189,Elena,Hale,+49898979730,Hauptstr. 20,Munich,80980,2,,,1945-07-20,Oncology,2024-03-14,
+30190,Lea,Khan,+49899464927,Parkweg 23,Munich,80040,2,,,1962-03-24,Emergency,2024-04-26,
+30191,Nora,Hoffmann,+49893663319,Rosenstr. 48,Munich,80939,2,,,1965-05-18,Oncology,2024-04-22,
+30192,Paul,Meyer,+49896614484,Ärzteweg 43,Munich,80096,2,,,1990-01-21,Emergency,2024-04-19,2024-05-09
+30193,Julia,Hale,+49892367376,Bahnhofstr. 85,Munich,80144,2,,,1971-05-20,Internal Medicine,2024-05-23,
+30194,Anna,Reuter,+49892421349,Lindenweg 72,Munich,80385,2,,,1997-09-23,Internal Medicine,2024-06-13,2024-06-30
+30195,Aisha,Zimmermann,+49899531021,Rosenstr. 3,Munich,80371,2,,,1967-09-16,Pediatrics,2024-06-30,2024-07-16
+30196,Elena,Fischer,+49893307963,Isarallee 10,Munich,80302,2,,,2015-10-04,ICU,2024-05-04,
+30197,Nora,Meyer,+49896649968,Bahnhofstr. 17,Munich,80611,2,,,1973-10-18,Pediatrics,2024-03-21,2024-04-10
+30198,Marco,Klein,+49891733037,Gartenweg 47,Munich,80692,2,,,2004-07-22,Pediatrics,2024-04-26,
+30199,Sara,Fischer,+49899959220,Ringstr. 40,Munich,80988,2,,,2012-07-17,Oncology,2024-06-24,
